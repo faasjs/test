@@ -38,13 +38,16 @@ const loadResource = function (targets: any, providers: any) {
     if (targets.hasOwnProperty(type)) {
       // 增加触发器
       const target = targets[type as string];
-      const targetResourceName = (target.resource ? target.resource.name : null) || providers.resources.defaults[type as string];
-      if (!providers.resources[targetResourceName as string]) {
-        throw Error('Resource not found: ' + targetResourceName);
+      if (!target.resource) {
+        target.resource = Object.create(null);
+      }
+      const name = target.resource.name || providers.resources.defaults[type as string];
+      if (!providers.resources[name as string]) {
+        throw Error(`Resource not found: ${name}#${type}`);
       }
       const targetResource = deepMerge(
-        providers.resources[targetResourceName as string],
-        { name: targetResourceName },
+        providers.resources[name as string],
+        { name },
         target.resource,
       );
 
@@ -52,7 +55,7 @@ const loadResource = function (targets: any, providers: any) {
         targetResource!.provider = providers[targetResource!.provider];
       }
 
-      target.resource = targetResource;
+      target.resource = deepMerge(targetResource, target.resource);
     }
   }
 };
