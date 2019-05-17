@@ -7,3 +7,19 @@
 [![Coverage Status](https://img.shields.io/codecov/c/github/faasjs/test.svg)](https://codecov.io/gh/faasjs/test)
 [![NPM Stable Version](https://img.shields.io/npm/v/@faasjs/test/stable.svg)](https://www.npmjs.com/package/@faasjs/test)
 [![NPM Beta Version](https://img.shields.io/npm/v/@faasjs/test/beta.svg)](https://www.npmjs.com/package/@faasjs/test)
+
+## How to use?
+
+```typescript
+import { FlowWarpper } from '@faasjs/test';
+
+const trigger = new FlowWarpper(require.resolve('../demo.flow')).createTrigger();
+
+describe('demo', function () {
+  test('should work', async function () {
+    const res = await trigger({}, {})
+
+    expect(res).toBeTruthy();
+  });
+});
+```
