@@ -44,7 +44,7 @@ const loadResource = function (targets: any, providers: any) {
       const name = target.resource.name || type;
 
       let resource: any;
-      if (providers[name as string]) {
+      if (providers.resources[name as string]) {
         resource = providers.resources[name as string];
       } else if (providers.resources.defaults[type as string]) {
         resource = providers.resources[providers.resources.defaults[type as string]];
