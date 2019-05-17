@@ -666,9 +666,9 @@
     typescript "*"
 
 "@faasjs/flow@beta":
-  version "0.0.0-alpha.19"
-  resolved "https://registry.npm.taobao.org/@faasjs/flow/download/@faasjs/flow-0.0.0-alpha.19.tgz#f562c95376e7c4b1ed2a7a5f64b159abc744f34e"
-  integrity sha1-9WLJU3bnxLHtKnpfZLFZq8dE804=
+  version "0.0.0-alpha.21"
+  resolved "https://registry.npm.taobao.org/@faasjs/flow/download/@faasjs/flow-0.0.0-alpha.21.tgz#10542859bc34de3307a96e3521d9dddaa4894689"
+  integrity sha1-EFQoWbw03jMHqW41Idnd2qSJRok=
   dependencies:
     "@faasjs/deep_merge" beta
     "@faasjs/logger" beta
