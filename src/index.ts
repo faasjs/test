@@ -85,7 +85,7 @@ class FlowWarpper {
    */
   constructor (file: string) {
     this.file = file;
-    this.stagging = process.env.FaasEnv || 'testing';
+    this.stagging = process.env.FaasEnv || 'local';
     this.logger = new Logger('TestCase');
 
     this.logger.info('Flow: [%s] %s', this.stagging, this.file);
