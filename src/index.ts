@@ -1,5 +1,5 @@
 import Logger from '@faasjs/logger';
-import { loadConfig, loadResource } from '@faasjs/load';
+import { loadFlow } from '@faasjs/load';
 import Flow from '@faasjs/flow';
 
 /**
@@ -9,7 +9,6 @@ class FlowWarpper {
   public file: string;
   public stagging: string;
   public logger: Logger;
-  public providers: any;
   public flow: Flow;
 
   /**
@@ -23,16 +22,11 @@ class FlowWarpper {
     this.logger = new Logger('TestCase');
 
     this.logger.info('Flow: [%s] %s', this.stagging, this.file);
-    this.providers = loadConfig(process.cwd() + '/', this.file, this.stagging);
     // eslint-disable-next-line security/detect-non-literal-require
     this.flow = require(this.file).default;
 
     // 解析配置项
-    loadResource({
-      function: this.flow.config.resource
-    }, this.providers);
-    loadResource(this.flow.config.triggers || {}, this.providers);
-    loadResource(this.flow.config.resources || {}, this.providers);
+    loadFlow(this.flow, process.cwd() + '/', this.file, this.stagging);
   }
 
   public createTrigger (key?: string | number) {
