@@ -673,6 +673,14 @@
     "@faasjs/deep_merge" beta
     "@faasjs/logger" beta
 
+"@faasjs/load@beta":
+  version "0.0.0-alpha.0"
+  resolved "https://registry.npm.taobao.org/@faasjs/load/download/@faasjs/load-0.0.0-alpha.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40faasjs%2Fload%2Fdownload%2F%40faasjs%2Fload-0.0.0-alpha.0.tgz#ec16536eab16fe6ffdd3f863424f6e63cfe7c0dc"
+  integrity sha1-7BZTbqsW/m/90/hjQk9uY8/nwNw=
+  dependencies:
+    "@faasjs/deep_merge" beta
+    js-yaml "*"
+
 "@faasjs/logger@beta":
   version "0.0.0-alpha.2"
   resolved "https://registry.npm.taobao.org/@faasjs/logger/download/@faasjs/logger-0.0.0-alpha.2.tgz#f318ce9acf5f988bfc7f4fd5e5687dad537cbf44"
@@ -905,11 +913,6 @@
   integrity sha1-EPULZMsF+wJBH7uknpBCo6Edo/k=
   dependencies:
     "@types/jest-diff" "*"
-
-"@types/js-yaml@*":
-  version "3.12.1"
-  resolved "https://registry.npm.taobao.org/@types/js-yaml/download/@types/js-yaml-3.12.1.tgz#5c6f4a1eabca84792fbd916f0cb40847f123c656"
-  integrity sha1-XG9KHqvKhHkvvZFvDLQIR/EjxlY=
 
 "@types/node@*", "@types/node@^12.0.2":
   version "12.0.2"

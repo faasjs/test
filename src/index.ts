@@ -1,72 +1,6 @@
-import deepMerge from '@faasjs/deep_merge';
 import Logger from '@faasjs/logger';
-import * as YAML from 'js-yaml';
-import { existsSync, readFileSync } from 'fs';
+import { loadConfig, loadResource } from '@faasjs/load';
 import Flow from '@faasjs/flow';
-
-const loadConfig = function (root: string, file: string, staging: string) {
-  const configs: any[] = [];
-
-  const paths = file.replace(root, '').replace(/\/[^/]+$/, '').split('/');
-
-  const roots = root.split('/');
-  roots.pop();
-  paths.unshift(roots.pop() as string);
-  paths.unshift(roots.join('/'));
-
-  paths.reduce(function (base, path) {
-    const root = base + '/' + path;
-    const defaults = root + '/config/providers/defaults.yaml';
-
-    if (existsSync(defaults)) {
-      configs.push(YAML.safeLoad(readFileSync(defaults).toString()));
-    }
-
-    const env = root + '/config/providers/' + staging + '.yaml';
-    if (existsSync(env)) {
-      configs.push(YAML.safeLoad(readFileSync(env).toString()));
-    }
-
-    return root;
-  });
-
-  return deepMerge.apply(null, configs);
-};
-
-const loadResource = function (targets: any, providers: any) {
-  for (const type in targets) {
-    if (targets.hasOwnProperty(type)) {
-      const target = targets[type as string];
-      if (!target.resource) {
-        target.resource = Object.create(null);
-      }
-
-      const name = target.resource.name || type;
-
-      let resource: any;
-      if (providers.resources[name as string]) {
-        resource = providers.resources[name as string];
-      } else if (providers.resources.defaults[type as string]) {
-        resource = providers.resources[providers.resources.defaults[type as string]];
-      }
-
-      if (!resource) {
-        throw Error(`Resource not found: ${name}#${type}`);
-      }
-      const targetResource = deepMerge(
-        resource,
-        { name },
-        target.resource,
-      );
-
-      if (typeof targetResource!.provider === 'string') {
-        targetResource!.provider = providers[targetResource!.provider];
-      }
-
-      target.resource = targetResource;
-    }
-  }
-};
 
 /**
  * 自动化测试用的流程实例
@@ -93,22 +27,12 @@ class FlowWarpper {
     // eslint-disable-next-line security/detect-non-literal-require
     this.flow = require(this.file).default;
 
-    // 处理云函数的资源配置
-    let resourceName = this.flow.config.resource!.name || this.providers.resources.defaults.function;
-
-    if (!resourceName || !this.providers.resources[resourceName as string]) {
-      throw Error('Not found resource: ' + resourceName);
-    }
-
-    this.flow.config.resource = deepMerge(this.providers.resources[resourceName as string], this.flow!.config.resource);
-
-    if (typeof this.flow.config.resource!.provider === 'string') {
-      this.flow.config.resource!.provider = this.providers.providers[this.flow.config.resource!.provider];
-    }
-
-    // 解析配置项中的云资源
-    loadResource(this.flow.config.triggers, this.providers);
-    loadResource(this.flow.config.resources, this.providers);
+    // 解析配置项
+    loadResource({
+      function: this.flow.config.resource
+    }, this.providers);
+    loadResource(this.flow.config.triggers || {}, this.providers);
+    loadResource(this.flow.config.resources || {}, this.providers);
   }
 
   public createTrigger (key?: string | number) {
