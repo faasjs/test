@@ -1,12 +1,12 @@
-<a name="FlowWarpper"></a>
+<a name="FuncWarpper"></a>
 
-## FlowWarpper
-自动化测试用的流程实例
+## FuncWarpper
+自动化测试用的云函数实例
 
 **Kind**: global class  
-<a name="new_FlowWarpper_new"></a>
+<a name="new_FuncWarpper_new"></a>
 
-### new FlowWarpper(file)
+### new FuncWarpper(file)
 新建流程实例
 
 

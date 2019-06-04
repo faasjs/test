@@ -1,15 +1,14 @@
 import Logger from '@faasjs/logger';
-import { loadFlow } from '@faasjs/load';
-import Flow from '@faasjs/flow';
+import { Func } from '@faasjs/func';
 
 /**
- * 自动化测试用的流程实例
+ * 自动化测试用的云函数实例
  */
-class FlowWarpper {
+export class FuncWarpper {
   public file: string;
   public stagging: string;
   public logger: Logger;
-  public flow: Flow;
+  public func: Func;
 
   /**
    * 新建流程实例
@@ -21,19 +20,12 @@ class FlowWarpper {
     this.stagging = process.env.FaasEnv || 'local';
     this.logger = new Logger('TestCase');
 
-    this.logger.info('Flow: [%s] %s', this.stagging, this.file);
+    this.logger.info('Func: [%s] %s', this.stagging, this.file);
     // eslint-disable-next-line security/detect-non-literal-require
-    this.flow = require(this.file).default;
-
-    // 解析配置项
-    loadFlow(this.flow, process.cwd() + '/', this.file, this.stagging);
+    this.func = require(this.file).default;
   }
 
-  public createTrigger (key?: string | number) {
-    return this.flow.createTrigger(key);
+  public handler () {
+    return this.func.export().handler;
   }
 }
-
-export {
-  FlowWarpper
-};

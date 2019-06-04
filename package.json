@@ -1,6 +1,6 @@
 {
   "name": "@faasjs/test",
-  "version": "0.0.0-alpha.7",
+  "version": "0.0.0-alpha.9",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -22,7 +22,7 @@
     "@babel/preset-typescript": "*",
     "@faasjs/eslint-config-recommended": "beta",
     "@faasjs/load": "beta",
-    "@faasjs/trigger-http": "beta",
+    "@faasjs/http": "beta",
     "@types/debug": "*",
     "@types/jest": "*",
     "@types/node": "*",
@@ -32,9 +32,7 @@
     "jsdoc-to-markdown": "*"
   },
   "devDependencies": {
-    "rollup": "*",
-    "rollup-plugin-typescript2": "*",
-    "typescript": "*"
+    "@faasjs/func": "beta"
   },
   "babel": {
     "presets": [
@@ -57,13 +55,14 @@
   },
   "jest": {
     "collectCoverage": true,
-    "collectCoverageFrom": [
-      "**/*.ts"
-    ],
     "testRegex": "/*\\.test\\.ts$",
-    "modulePathIgnorePatterns": [
+    "testPathIgnorePatterns": [
+      "/lib/"
+    ],
+    "coveragePathIgnorePatterns": [
       "/lib/",
-      "/tmp/"
+      "/tmp/",
+      "/__tests__/"
     ]
   }
 }

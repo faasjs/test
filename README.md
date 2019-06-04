@@ -11,13 +11,13 @@
 ## How to use?
 
 ```typescript
-import { FlowWarpper } from '@faasjs/test';
+import { FuncWarpper } from '@faasjs/test';
 
-const trigger = new FlowWarpper(require.resolve('../demo.flow')).createTrigger();
+const handler = new FuncWarpper(require.resolve('../demo.func')).handler();
 
 describe('demo', function () {
   test('should work', async function () {
-    const res = await trigger({}, {})
+    const res = await handler({}, {})
 
     expect(res).toBeTruthy();
   });
