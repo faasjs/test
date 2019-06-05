@@ -1,0 +1,8 @@
+defaults:
+  providers:
+    mock:
+  plugins:
+    defaults:
+      http: http
+    http:
+      type: http
