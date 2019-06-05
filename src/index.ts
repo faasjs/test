@@ -10,6 +10,7 @@ export class FuncWarpper {
   public stagging: string;
   public logger: Logger;
   public func: Func;
+  public config: any;
 
   /**
    * 新建流程实例
@@ -25,9 +26,22 @@ export class FuncWarpper {
     // eslint-disable-next-line security/detect-non-literal-require
     this.func = require(this.file).default;
     this.func.config = loadConfig(process.cwd(), this.file)[this.stagging];
+    this.config = this.func.config;
   }
 
-  public handler () {
-    return this.func.export().handler;
+  /**
+   * 生成接口
+   * @param mountData {object} 预初始化的 event 对象，默认为空，不进行预初始化
+   */
+  public async handler (mountData?: any) {
+    const handler = this.func.export().handler;
+
+    if (!mountData) {
+      return handler;
+    }
+
+    await handler(mountData);
+
+    return handler;
   }
 }

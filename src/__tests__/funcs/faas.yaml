@@ -6,3 +6,4 @@ defaults:
       http: http
     http:
       type: http
+local:
