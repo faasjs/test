@@ -1,5 +1,6 @@
 import Logger from '@faasjs/logger';
 import { Func } from '@faasjs/func';
+import { loadConfig } from '@faasjs/load';
 
 /**
  * 自动化测试用的云函数实例
@@ -23,6 +24,7 @@ export class FuncWarpper {
     this.logger.info('Func: [%s] %s', this.stagging, this.file);
     // eslint-disable-next-line security/detect-non-literal-require
     this.func = require(this.file).default;
+    this.func.config = loadConfig(process.cwd(), this.file);
   }
 
   public handler () {
