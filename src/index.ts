@@ -24,7 +24,7 @@ export class FuncWarpper {
     this.logger.info('Func: [%s] %s', this.stagging, this.file);
     // eslint-disable-next-line security/detect-non-literal-require
     this.func = require(this.file).default;
-    this.func.config = loadConfig(process.cwd(), this.file);
+    this.func.config = loadConfig(process.cwd(), this.file)[this.stagging];
   }
 
   public handler () {
