@@ -41,7 +41,7 @@ export class FuncWarpper {
    * @param event {any} 事件对象
    * @param context {any=} 环境对象
    */
-  public async mountedHanlder (event: any, context?: any) {
+  public async mountedHandler (event: any, context?: any) {
     const handler = this.func.export().handler;
 
     await this.func.mount({

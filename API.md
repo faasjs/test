@@ -8,7 +8,7 @@
 * [FuncWarpper](#FuncWarpper)
     * [new FuncWarpper(file)](#new_FuncWarpper_new)
     * [.handler()](#FuncWarpper+handler)
-    * [.mountedHanlder(event, [context])](#FuncWarpper+mountedHanlder)
+    * [.mountedHandler(event, [context])](#FuncWarpper+mountedHandler)
 
 <a name="new_FuncWarpper_new"></a>
 
@@ -30,9 +30,9 @@ new TestCase(require.resolve('../demo.flow.ts'))
 生成接口
 
 **Kind**: instance method of [<code>FuncWarpper</code>](#FuncWarpper)  
-<a name="FuncWarpper+mountedHanlder"></a>
+<a name="FuncWarpper+mountedHandler"></a>
 
-### funcWarpper.mountedHanlder(event, [context])
+### funcWarpper.mountedHandler(event, [context])
 生成实例已激活的接口
 
 **Kind**: instance method of [<code>FuncWarpper</code>](#FuncWarpper)  

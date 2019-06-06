@@ -15,7 +15,7 @@ test('http', async function () {
 
 test('with mountData', async function () {
   const func = new FuncWarpper(require.resolve('./funcs/http.func'));
-  await func.mountedHanlder({ headers: {} });
+  await func.mountedHandler({ headers: {} });
 
   expect(func.func.plugins[0].cookie).not.toBeUndefined();
 });
