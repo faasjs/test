@@ -31,16 +31,23 @@ export class FuncWarpper {
 
   /**
    * 生成接口
-   * @param mountData {object} 预初始化的 event 对象，默认为空，不进行预初始化
    */
-  public async handler (mountData?: any) {
+  public handler () {
+    return this.func.export().handler;
+  }
+
+  /**
+   * 生成实例已激活的接口
+   * @param event {any} 事件对象
+   * @param context {any=} 环境对象
+   */
+  public async mountedHanlder (event: any, context?: any) {
     const handler = this.func.export().handler;
 
-    if (!mountData) {
-      return handler;
-    }
-
-    await handler(mountData);
+    await this.func.mount({
+      event,
+      context
+    });
 
     return handler;
   }

@@ -1,6 +1,6 @@
 {
   "name": "@faasjs/test",
-  "version": "0.0.0-alpha.12",
+  "version": "0.0.0-alpha.13",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -21,7 +21,7 @@
     "@babel/preset-env": "*",
     "@babel/preset-typescript": "*",
     "@faasjs/eslint-config-recommended": "beta",
-    "@faasjs/http": "^0.0.0-alpha.8",
+    "@faasjs/http": "beta",
     "@faasjs/load": "beta",
     "@types/debug": "*",
     "@types/jest": "*",
@@ -32,7 +32,7 @@
     "jsdoc-to-markdown": "*"
   },
   "devDependencies": {
-    "@faasjs/func": "^0.0.0-alpha.13"
+    "@faasjs/func": "beta"
   },
   "babel": {
     "presets": [

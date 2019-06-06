@@ -665,15 +665,15 @@
     eslint-plugin-security "*"
     typescript "*"
 
-"@faasjs/func@^0.0.0-alpha.13":
-  version "0.0.0-alpha.13"
-  resolved "https://registry.npmjs.org/@faasjs/func/-/func-0.0.0-alpha.13.tgz#d43498a0b29a72a66d212e85232d6682756e6741"
-  integrity sha512-/grUWYr1D0y/+rjAkioanM2bCxqEhdLFh/q80d66c7U77GFlcap7rOW1MdMEXcVWdi/+NM3EJRf7/I+Pw8rWBw==
+"@faasjs/func@beta":
+  version "0.0.0-alpha.14"
+  resolved "https://registry.npmjs.org/@faasjs/func/-/func-0.0.0-alpha.14.tgz#d23b621616f90515b36e64437ab6be02e99a02b2"
+  integrity sha512-gODbRVtU+bp0PAUgf6V9/p797DjmYAPHNX4jfMkTFFERycQM5Ffkr21J+G3DTUTFlpXSRfRy0gcR695LySC5Eg==
   dependencies:
     "@faasjs/deep_merge" beta
     "@faasjs/logger" beta
 
-"@faasjs/http@^0.0.0-alpha.8":
+"@faasjs/http@beta":
   version "0.0.0-alpha.8"
   resolved "https://registry.npmjs.org/@faasjs/http/-/http-0.0.0-alpha.8.tgz#34a0acee8064f323ce2addcf82b722e04e463fa7"
   integrity sha512-5UXvFR/bxezZPzQicxCUqzYXCSNTczGGizpdy5gfpFWSLDv8s375UxjC/hs9/79FRFsh3fCrS1J8BcCz8cvlLQ==
@@ -916,9 +916,9 @@
     "@types/jest-diff" "*"
 
 "@types/node@*", "@types/node@^12.0.3":
-  version "12.0.4"
-  resolved "https://registry.npmjs.org/@types/node/-/node-12.0.4.tgz#46832183115c904410c275e34cf9403992999c32"
-  integrity sha512-j8YL2C0fXq7IONwl/Ud5Kt0PeXw22zGERt+HSSnwbKOJVsAGkEz3sFCYwaF9IOuoG1HOtE0vKCj6sXF7Q0+Vaw==
+  version "12.0.5"
+  resolved "https://registry.npmjs.org/@types/node/-/node-12.0.5.tgz#ac14404c33d1a789973c45379a67f7f7e58a01b9"
+  integrity sha512-CFLSALoE+93+Hcb5pFjp0J1uMrrbLRe+L1+gFwerJ776R3TACSF0kTVRQ7AvRa7aFx70nqYHAc7wQPlt9kY2Mg==
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -1720,9 +1720,9 @@ ecc-jsbn@~0.1.1:
     safer-buffer "^2.1.0"
 
 electron-to-chromium@^1.3.137:
-  version "1.3.146"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.146.tgz#d7010f417f87c2068fbb6700ae57767e2393eba7"
-  integrity sha512-BrUq08sx7eR4PCwLbjFxXmjcbDro6DSoc1pN8VCxq76U+o9JQzJlWH/NVtcpAqcktwpE5CVvMyqHqTQfCETNoQ==
+  version "1.3.148"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.148.tgz#5796c0d9eb0358d397163413b90bf376c5d8bf08"
+  integrity sha512-nuCOlXNlGMQmdzihIPGm2K3Yf3H1hke/1rK381i02pH8wNliJU9hVNnOi/xjmxt+mjABd/BzufP5nPHWKshLWA==
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -4287,9 +4287,9 @@ rollup-pluginutils@2.6.0:
     micromatch "^3.1.10"
 
 rollup@*:
-  version "1.14.0"
-  resolved "https://registry.npmjs.org/rollup/-/rollup-1.14.0.tgz#46855014c107e99a568baf245a12a57e53022faa"
-  integrity sha512-NDW4GZevPFmbGwgcxufIOqWbHMJTyLxRyuLk3m3cPNkq8dQSaPEgK7s0SCiDlCITA5X1c3GOJkDAeWULI429xg==
+  version "1.14.2"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-1.14.2.tgz#e97c496a6a6d6554c9750d0a028dc1848df04b42"
+  integrity sha512-rFFIbi8UqFdZMRwYj+wVGQFTPBu++CDfbdlM10OZIpxrsRIgafos3cbGhXWxXo5jyRBB98u+0lEkdsvdE0IiyQ==
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "^12.0.3"
