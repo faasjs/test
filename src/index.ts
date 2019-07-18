@@ -19,7 +19,7 @@ export class FuncWarpper {
    */
   constructor (file: string) {
     this.file = file;
-    this.stagging = process.env.FaasEnv || 'local';
+    this.stagging = process.env.FaasEnv || 'testing';
     this.logger = new Logger('TestCase');
 
     this.logger.info('Func: [%s] %s', this.stagging, this.file);
