@@ -2,17 +2,20 @@ import Logger from '@faasjs/logger';
 import { Func, ExportedHandler } from '@faasjs/func';
 import { loadConfig } from '@faasjs/load';
 
+// 输出 func 的定义以便于测试用例的引用
+export * from '@faasjs/func';
+
 /**
  * 自动化测试用的云函数实例
  */
 export class FuncWarpper {
-  public file: string;
-  public stagging: string;
-  public logger: Logger;
-  public func: Func;
-  public config: any;
-  public plugins: any[];
-  public handler: ExportedHandler;
+  public readonly file: string;
+  public readonly stagging: string;
+  public readonly logger: Logger;
+  public readonly func: Func;
+  public readonly config: any;
+  public readonly plugins: any[];
+  public readonly handler: ExportedHandler;
 
   /**
    * 新建流程实例
