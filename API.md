@@ -7,7 +7,6 @@
 
 * [FuncWarpper](#FuncWarpper)
     * [new FuncWarpper(file)](#new_FuncWarpper_new)
-    * [.handler()](#FuncWarpper+handler)
     * [.mountedHandler(event, [context])](#FuncWarpper+mountedHandler)
 
 <a name="new_FuncWarpper_new"></a>
@@ -24,12 +23,6 @@
 ```js
 new TestCase(require.resolve('../demo.flow.ts'))
 ```
-<a name="FuncWarpper+handler"></a>
-
-### funcWarpper.handler()
-生成接口
-
-**Kind**: instance method of [<code>FuncWarpper</code>](#FuncWarpper)  
 <a name="FuncWarpper+mountedHandler"></a>
 
 ### funcWarpper.mountedHandler(event, [context])

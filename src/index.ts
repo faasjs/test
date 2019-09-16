@@ -1,5 +1,5 @@
 import Logger from '@faasjs/logger';
-import { Func } from '@faasjs/func';
+import { Func, ExportedHandler } from '@faasjs/func';
 import { loadConfig } from '@faasjs/load';
 
 /**
@@ -11,6 +11,8 @@ export class FuncWarpper {
   public logger: Logger;
   public func: Func;
   public config: any;
+  public plugins: any[];
+  public handler: ExportedHandler;
 
   /**
    * 新建流程实例
@@ -27,13 +29,8 @@ export class FuncWarpper {
     this.func = require(this.file).default;
     this.func.config = loadConfig(process.cwd(), this.file)[this.stagging];
     this.config = this.func.config;
-  }
-
-  /**
-   * 生成接口
-   */
-  public handler () {
-    return this.func.export().handler;
+    this.plugins = this.func.plugins;
+    this.handler = this.func.export().handler;
   }
 
   /**
@@ -41,7 +38,7 @@ export class FuncWarpper {
    * @param event {any} 事件对象
    * @param context {any=} 环境对象
    */
-  public async mountedHandler (event: any, context?: any) {
+  public async mountedHandler (event: any, context?: any): Promise<ExportedHandler> {
     const handler = this.func.export().handler;
 
     await this.func.mount({

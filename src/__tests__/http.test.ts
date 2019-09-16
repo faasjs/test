@@ -2,11 +2,8 @@ import { FuncWarpper } from '../../src/index';
 
 test('http', async function () {
   const func = new FuncWarpper(require.resolve('./funcs/http.func'));
-  const handler = await func.handler();
 
-  expect(func.func.plugins[0].cookie).toBeUndefined();
-
-  const res = await handler({
+  const res = await func.handler({
     headers: {}
   }, {});
 
@@ -17,5 +14,9 @@ test('with mountData', async function () {
   const func = new FuncWarpper(require.resolve('./funcs/http.func'));
   await func.mountedHandler({ headers: {} });
 
-  expect(func.func.plugins[0].cookie).not.toBeUndefined();
+  const res = await func.handler({
+    headers: {}
+  }, {});
+
+  expect(res.body).toEqual('{"data":true}');
 });
