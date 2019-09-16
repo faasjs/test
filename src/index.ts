@@ -1,5 +1,5 @@
 import Logger from '@faasjs/logger';
-import { Func, ExportedHandler } from '@faasjs/func';
+import { Func, ExportedHandler, Plugin, Config } from '@faasjs/func';
 import { loadConfig } from '@faasjs/load';
 
 // 输出 func 的定义以便于测试用例的引用
@@ -13,8 +13,8 @@ export class FuncWarpper {
   public readonly stagging: string;
   public readonly logger: Logger;
   public readonly func: Func;
-  public readonly config: any;
-  public readonly plugins: any[];
+  public readonly config: Config;
+  public readonly plugins: Plugin[];
   public readonly handler: ExportedHandler;
 
   /**
