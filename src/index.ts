@@ -42,14 +42,23 @@ export class FuncWarpper {
    * @param event {any} 事件对象
    * @param context {any=} 环境对象
    */
-  public async mountedHandler (event: any, context?: any): Promise<ExportedHandler> {
+  public async mountedHandler (event?: any, context?: any): Promise<ExportedHandler> {
     const handler = this.func.export().handler;
 
     await this.func.mount({
-      event,
-      context
+      event: event || Object.create(null),
+      context: context || Object.create(null)
     });
 
     return handler;
+  }
+
+  public JSONhandler (body?: any, headers?: { [key: string]: any }): Promise<any> {
+    return this.handler({
+      headers: Object.assign({
+        'content-type': 'application/json'
+      }, headers),
+      body: typeof body === 'string' ? body : JSON.stringify(body)
+    });
   }
 }
