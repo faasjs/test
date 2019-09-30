@@ -16,6 +16,7 @@ export class FuncWarpper {
   public readonly config: Config;
   public readonly plugins: Plugin[];
   public readonly handler: ExportedHandler;
+  [key: string]: any;
 
   /**
    * 新建流程实例
